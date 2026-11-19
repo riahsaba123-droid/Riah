@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sabariah, S.A.B. | Healthcare Virtual Assistant & Certified Caregiver</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-light: #f0fdfa;
+      --accent: #b45309;
+      --accent-light: #fffbeb;
+      --notion-bg: #18181b;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --bg-body: #f8fafc;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ================= STICKY HEADER ================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: 14px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-logo-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-name { font-weight: 800; font-size: 1.02rem; color: var(--text-main); line-height: 1.2; }
+    .brand-sub { font-size: 0.72rem; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; }
+
+    nav.nav-links { display: flex; align-items: center; gap: 18px; }
+    nav.nav-links a { font-size: 0.86rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s; white-space: nowrap; }
+    nav.nav-links a:hover { color: var(--primary); }
+
+    .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+    /* Language Toggle Switch */
+    .lang-toggle {
+      display: inline-flex;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--white);
+      color: var(--primary);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 15px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-notion { background: var(--notion-bg); color: var(--white); }
+    .btn-notion:hover { background: #27272a; transform: translateY(-1px); }
+    .btn-outline { background: var(--white); color: var(--text-main); border-color: var(--border); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+    /* ================= HERO SECTION ================= */
+    .hero {
+      padding: 64px 0 56px;
+      background: radial-gradient(circle at top right, #ccfbf1 0%, transparent 45%),
+                  radial-gradient(circle at bottom left, #fef3c7 0%, transparent 40%),
+                  var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-grid { display: grid; grid-template-columns: 240px 1fr; gap: 44px; align-items: center; }
+    .hero-photo-wrap { position: relative; width: 230px; height: 230px; margin: 0 auto; }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow-md);
+      background: var(--primary-light);
+      display: block;
+    }
+    .verified-float {
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-title { font-size: 2.45rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-main); margin-bottom: 10px; }
+    .apostille-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent-light);
+      border: 1px solid #fcd34d;
+      color: #78350f;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+    .hero-role { font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 14px; }
+    .hero-summary { color: var(--text-muted); font-size: 1rem; max-width: 760px; margin-bottom: 22px; }
+    .trust-strip { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .trust-pill {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 13px;
+      border-radius: 999px;
+    }
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* ================= SECTION COMMON ================= */
+    section { padding: 68px 0; }
+    .section-header { margin-bottom: 36px; }
+    .section-kicker {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .section-title { font-size: 1.85rem; font-weight: 800; color: var(--text-main); }
+    .section-desc { color: var(--text-muted); margin-top: 6px; max-width: 720px; }
+
+    /* ================= ABOUT & TIMELINE ================= */
+    .about-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 36px; align-items: start; }
+    .summary-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .summary-card h3 { font-size: 1.15rem; margin-bottom: 12px; color: var(--primary-dark); }
+    .summary-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px; }
+
+    .timeline { display: flex; flex-direction: column; gap: 18px; }
+    .timeline-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .timeline-role { font-weight: 700; font-size: 1.02rem; color: var(--text-main); }
+    .timeline-period {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .timeline-item p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ================= SKILLS & SERVICES ================= */
+    .skills-section { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .skill-card { background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+    .skill-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .skill-card h3 { font-size: 1.1rem; margin-bottom: 14px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ================= PORTFOLIO & NOTION BANNER ================= */
+    .notion-banner {
+      background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .notion-banner h4 { font-size: 1.08rem; margin-bottom: 4px; }
+    .notion-banner p { font-size: 0.88rem; color: #d4d4d8; }
+
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+    .filter-btn {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .project-cat {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .project-card h3 { font-size: 1.12rem; margin-bottom: 10px; }
+    .project-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
+
+    /* ================= CERTIFICATES VAULT ================= */
+    .vault-section { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .vault-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+    .search-input {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      min-width: 280px;
+      font-family: inherit;
+    }
+    .search-input:focus { outline: none; border-color: var(--primary); }
+
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .cert-card {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .cert-card.apostille-highlight { background: var(--accent-light); border-color: #fcd34d; }
+    .cert-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .cert-title { font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .cert-meta { font-size: 0.83rem; color: var(--text-muted); }
+
+    /* ================= CONTACT & FOOTER ================= */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 36px; }
+    .contact-card, .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .contact-list { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+    .contact-item { font-size: 0.92rem; color: var(--text-muted); }
+    .contact-item strong {
+      color: var(--text-main);
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+
+    footer { background: var(--text-main); color: #94a3b8; text-align: center; padding: 28px 20px; font-size: 0.85rem; }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--text-main);
+      color: var(--white);
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      z-index: 2000;
+    }
+    .toast.show { opacity: 1; }
+
+    @media (max-width: 1024px) {
+      nav.nav-links { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero-grid, .about-grid, .contact-grid, .skills-grid, .projects-grid, .cert-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 1.9rem; }
+      .header-actions .btn-notion { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= 1. STICKY HEADER ================= -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#home" class="brand">
+        <div class="brand-logo-wrap">
+          <img id="headerLogoImg" src="<?= logoDataUri ?>" alt="Sabariah, S.A.B. Logo" class="brand-logo"
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1yUfPjYU82pMYb3fwOpmss9NuEsCvAwpG=s400';">
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Sabariah, S.A.B.</span>
+          <span class="brand-sub" data-i18n="brandSub">Apostilled Bachelor's Degree</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#skills" data-i18n="navSkills">Skills & Services</a>
+        <a href="#portfolio" data-i18n="navPortfolio">Portfolio</a>
+        <a href="#certificates" data-i18n="navCerts">Certificates & Docs</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-toggle" role="group" aria-label="Language Switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="id">ID</button>
+        </div>
+        <a id="headerNotionBtn" href="#" target="_blank" rel="noopener" class="btn btn-notion" data-i18n="headerNotion">
+          Notion Vault ↗
+        </a>
+        <a id="headerCvBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="headerCv">
+          Download CV ⬇
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. HERO SECTION ================= -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-photo-wrap">
+        <img id="heroProfileImg" src="<?= logoDataUri ?>" alt="Sabariah, S.A.B. Portrait" class="hero-photo"
+             onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1yUfPjYU82pMYb3fwOpmss9NuEsCvAwpG=s800';">
+        <span class="verified-float" data-i18n="verifiedFloat">✓ Verified & Apostilled</span>
+      </div>
+
+      <div>
+        <h1 class="hero-title">SABARIAH, S.A.B.</h1>
+
+        <div class="apostille-badge">
+          <span>🎓</span>
+          <div data-i18n-html="apostilleBadge">
+            <strong>Apostilled Bachelor’s Degree in Business Administration (S.A.B.)</strong> — 
+            <em>Internationally Legalized & Verified for Global Employment</em>
+          </div>
+        </div>
+
+        <div class="hero-role" data-i18n="heroRole">Healthcare Virtual Assistant & Data Support | Certified Caregiver</div>
+
+        <p class="hero-summary" data-i18n="heroSummary">
+          Bridging compassionate, patient-centered care with streamlined digital healthcare administration. Over 8 years of international caregiving experience in Hong Kong and Dubai across elderly and cardiac support, telehealth coordination, EMR data entry, and Excel/Power BI health dashboard reporting.
+        </p>
+
+        <div class="trust-strip">
+          <span class="trust-pill" data-i18n="pill1">Apostilled S1 Degree (UT)</span>
+          <span class="trust-pill">CNA, ACA, City & Guilds, TQUK Level 2</span>
+          <span class="trust-pill" data-i18n="pill3">ASHI First Aid, CPR & AED Certified</span>
+          <span class="trust-pill" data-i18n="pill4">BNSP Certified Data Analyst & MS Office</span>
+        </div>
+
+        <div class="hero-cta-group">
+          <a id="heroNotionBtn" href="#" target="_blank" rel="noopener" class="btn btn-notion" data-i18n="heroNotionBtn">
+            Open All Portfolio & Docs in Notion ↗
+          </a>
+          <a id="heroCvBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="heroCvBtn">
+            Download Official CV (PDF) ⬇
+          </a>
+          <a href="#certificates" class="btn btn-outline" data-i18n="heroCertBtn">
+            Verify Certificates & Apostille Docs
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. ABOUT & EXPERIENCE ================= -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker" data-i18n="aboutKicker">Profile & Career Journey</div>
+        <h2 class="section-title" data-i18n="aboutTitle">About Me & Professional Experience</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="summary-card">
+          <h3 data-i18n="execSummaryTitle">Executive Summary</h3>
+          <p data-i18n="execSummaryP1">
+            I combine over eight years of hands-on international caregiving experience in Hong Kong and Dubai with structured administrative operations, digital literacy instruction, and healthcare data reporting.
+          </p>
+          <p data-i18n-html="execSummaryP2">
+            Holding an <strong>Apostilled Bachelor’s Degree in Business Administration (S.A.B.)</strong> alongside international caregiving credentials (UK, US, Hong Kong, and Indonesia) and BNSP Data Analyst certification, I help healthcare teams, clinics, and families deliver safe, organized, and data-informed care.
+          </p>
+          <a id="aboutNotionBtn" href="#" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:8px; width:100%;" data-i18n="aboutNotionBtn">
+            Explore Full Journey in Notion ↗
+          </a>
+        </div>
+
+        <div class="timeline" id="timelineContainer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. SKILLS & SERVICES ================= -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker" data-i18n="skillsKicker">Capabilities</div>
+        <h2 class="section-title" data-i18n="skillsTitle">Core Competencies & Services</h2>
+      </div>
+
+      <div class="skills-grid" id="skillsContainer"></div>
+    </div>
+  </section>
+
+  <!-- ================= 5. PORTFOLIO SHOWCASE ================= -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker" data-i18n="portKicker">Applied Work</div>
+        <h2 class="section-title" data-i18n="portTitle">Project Showcase & Case Studies</h2>
+      </div>
+
+      <div class="notion-banner">
+        <div>
+          <h4 data-i18n="portBannerTitle">📂 All-in-One Notion Portfolio & Complete Documentation</h4>
+          <p data-i18n="portBannerDesc">Browse complete project files, live interactive previews, workflows, and supporting records directly inside my Notion workspace.</p>
+        </div>
+        <a id="portfolioNotionBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="portBannerBtn">
+          Open Notion Workspace ↗
+        </a>
+      </div>
+
+      <div class="filter-bar" id="projectFilters"></div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= 6. CERTIFICATES & DOCS VAULT ================= -->
+  <section id="certificates" class="vault-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker" data-i18n="vaultKicker">Credential Verification</div>
+        <h2 class="section-title" data-i18n="vaultTitle">Certificates & Official Documents Vault</h2>
+        <p class="section-desc" data-i18n="vaultDesc">Direct verification links to apostilled academic degrees, international caregiving licenses, and technical certifications.</p>
+      </div>
+
+      <div class="notion-banner">
+        <div>
+          <h4 data-i18n="vaultBannerTitle">🗂️ One-Click Complete Document Archive</h4>
+          <p data-i18n="vaultBannerDesc">Prefer viewing all certificates, Apostille verification documents, transcripts, and project files together in one organized dashboard?</p>
+        </div>
+        <a id="vaultNotionBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="vaultBannerBtn">
+          Open Full Notion Document Vault ↗
+        </a>
+      </div>
+
+      <div class="vault-controls">
+        <div class="filter-bar" id="certFilters" style="margin-bottom:0;"></div>
+        <input type="text" id="certSearchInput" class="search-input" placeholder="Search certificate or issuer...">
+      </div>
+
+      <div class="cert-grid" id="certGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= 7. CONTACT & FOOTER ================= -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker" data-i18n="contactKicker">Get In Touch</div>
+        <h2 class="section-title" data-i18n="contactTitle">Contact & Availability</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="avail-badge" data-i18n="availBadge">🟢 Available Immediately — Remote, Freelance, or Contract</div>
+          <h3 data-i18n="directContactTitle">Direct Contact & Verification</h3>
+          <p style="color:var(--text-muted); font-size:0.92rem; margin-top:6px;" data-i18n="directContactDesc">
+            Open to Healthcare Virtual Assistant roles, clinical data support, telehealth coordination, and international caregiving opportunities.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong data-i18n="lblEmail">Email Address</strong>
+              <span id="emailText">riahsaba123@gmail.com</span>
+              <button type="button" id="copyEmailBtn" class="btn btn-outline" style="padding:4px 10px; font-size:0.78rem; margin-left:8px;" data-i18n="btnCopy">
+                Copy Email
+              </button>
+            </div>
+            <div class="contact-item">
+              <strong data-i18n="lblNotion">Notion Master Portfolio</strong>
+              <a id="contactNotionLink" href="#" target="_blank" rel="noopener" style="color:var(--primary); font-weight:600;">
+                app.notion.com/p/RIAH_JOURNEY ↗
+              </a>
+            </div>
+            <div class="contact-item">
+              <strong data-i18n="lblCv">Official CV (PDF)</strong>
+              <a id="contactCvLink" href="#" target="_blank" rel="noopener" style="color:var(--primary); font-weight:600;" data-i18n="linkCv">
+                Download Latest CV from Google Drive ↗
+              </a>
+            </div>
+            <div class="contact-item">
+              <strong>LinkedIn</strong>
+              <a href="https://linkedin.com/in/saba-riah" target="_blank" rel="noopener" style="color:var(--primary); font-weight:600;">
+                linkedin.com/in/saba-riah ↗
+              </a>
+            </div>
+            <div class="contact-item">
+              <strong data-i18n="lblLangLoc">Languages & Location</strong>
+              <span data-i18n="valLangLoc">Indonesian (Native) • English (Working Proficiency) • Arabic (Basic) — Based in Hong Kong</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3 data-i18n="formTitle">Quick Inquiry Form</h3>
+          <form id="inquiryForm" style="margin-top:16px;">
+            <div class="form-group">
+              <label for="senderName" data-i18n="lblName">Full Name</label>
+              <input type="text" id="senderName" required placeholder="e.g. Dr. Sarah Chen">
+            </div>
+            <div class="form-group">
+              <label for="senderEmail" data-i18n="lblFormEmail">Email Address</label>
+              <input type="email" id="senderEmail" required placeholder="name@organization.com">
+            </div>
+            <div class="form-group">
+              <label for="inquiryType" data-i18n="lblType">Inquiry Type</label>
+              <select id="inquiryType"></select>
+            </div>
+            <div class="form-group">
+              <label for="senderMessage" data-i18n="lblMsg">Message</label>
+              <textarea id="senderMessage" rows="4" required placeholder="Write your message or role details here..."></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%;" data-i18n="btnSend">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" data-i18n="footerText">
+      © 2026 Sabariah, S.A.B. — Apostilled Bachelor of Business Administration | Healthcare Virtual Assistant & Certified Caregiver
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    /**
+     * =========================================================================
+     * CENTRALIZED LINKS & BILINGUAL CONTENT (ENGLISH / INDONESIAN)
+     * =========================================================================
+     */
+    const PORTFOLIO_CONFIG = {
+      notionMasterVault: "https://app.notion.com/p/RIAH_JOURNEY-41cb93c532d980ee9a52fc7a9780976c?source=copy_link",
+      officialCvPdf: "https://drive.google.com/file/d/1CbMLXAIDV9IM88zFmMIDunfdAWILfaJQ/view?usp=drive_link"
+    };
+
+    const I18N = {
+      en: {
+        brandSub: "Apostilled Bachelor's Degree",
+        navHome: "Home",
+        navAbout: "About",
+        navSkills: "Skills & Services",
+        navPortfolio: "Portfolio",
+        navCerts: "Certificates & Docs",
+        navContact: "Contact",
+        headerNotion: "Notion Vault ↗",
+        headerCv: "Download CV ⬇",
+        verifiedFloat: "✓ Verified & Apostilled",
+        apostilleBadge: "<strong>Apostilled Bachelor’s Degree in Business Administration (S.A.B.)</strong> — <em>Internationally Legalized & Verified for Global Employment</em>",
+        heroRole: "Healthcare Virtual Assistant & Data Support | Certified Caregiver",
+        heroSummary: "Bridging compassionate, patient-centered care with streamlined digital healthcare administration. Over 8 years of international caregiving experience in Hong Kong and Dubai across elderly and cardiac support, telehealth coordination, EMR data entry, and Excel/Power BI health dashboard reporting.",
+        pill1: "Apostilled S1 Degree (UT)",
+        pill3: "ASHI First Aid, CPR & AED Certified",
+        pill4: "BNSP Certified Data Analyst & MS Office",
+        heroNotionBtn: "Open All Portfolio & Docs in Notion ↗",
+        heroCvBtn: "Download Official CV (PDF) ⬇",
+        heroCertBtn: "Verify Certificates & Apostille Docs",
+        aboutKicker: "Profile & Career Journey",
+        aboutTitle: "About Me & Professional Experience",
+        execSummaryTitle: "Executive Summary",
+        execSummaryP1: "I combine over eight years of hands-on international caregiving experience in Hong Kong and Dubai with structured administrative operations, digital literacy instruction, and healthcare data reporting.",
+        execSummaryP2: "Holding an <strong>Apostilled Bachelor’s Degree in Business Administration (S.A.B.)</strong> alongside international caregiving credentials (UK, US, Hong Kong, and Indonesia) and BNSP Data Analyst certification, I help healthcare teams, clinics, and families deliver safe, organized, and data-informed care.",
+        aboutNotionBtn: "Explore Full Journey in Notion ↗",
+        skillsKicker: "Capabilities",
+        skillsTitle: "Core Competencies & Services",
+        portKicker: "Applied Work",
+        portTitle: "Project Showcase & Case Studies",
+        portBannerTitle: "📂 All-in-One Notion Portfolio & Complete Documentation",
+        portBannerDesc: "Browse complete project files, live interactive previews, workflows, and supporting records directly inside my Notion workspace.",
+        portBannerBtn: "Open Notion Workspace ↗",
+        vaultKicker: "Credential Verification",
+        vaultTitle: "Certificates & Official Documents Vault",
+        vaultDesc: "Direct verification links to apostilled academic degrees, international caregiving licenses, and technical certifications.",
+        vaultBannerTitle: "🗂️ One-Click Complete Document Archive",
+        vaultBannerDesc: "Prefer viewing all certificates, Apostille verification documents, transcripts, and project files together in one organized dashboard?",
+        vaultBannerBtn: "Open Full Notion Document Vault ↗",
+        searchPlaceholder: "Search certificate or issuer...",
+        noCertsFound: "No matching certificates found.",
+        contactKicker: "Get In Touch",
+        contactTitle: "Contact & Availability",
+        availBadge: "🟢 Available Immediately — Remote, Freelance, or Contract",
+        directContactTitle: "Direct Contact & Verification",
+        directContactDesc: "Open to Healthcare Virtual Assistant roles, clinical data support, telehealth coordination, and international caregiving opportunities.",
+        lblEmail: "Email Address",
+        btnCopy: "Copy Email",
+        copiedToast: "Email copied: riahsaba123@gmail.com",
+        lblNotion: "Notion Master Portfolio",
+        lblCv: "Official CV (PDF)",
+        linkCv: "Download Latest CV from Google Drive ↗",
+        lblLangLoc: "Languages & Location",
+        valLangLoc: "Indonesian (Native) • English (Working Proficiency) • Arabic (Basic) — Based in Hong Kong",
+        formTitle: "Quick Inquiry Form",
+        lblName: "Full Name",
+        phName: "e.g. Dr. Sarah Chen",
+        lblFormEmail: "Email Address",
+        phEmail: "name@organization.com",
+        lblType: "Inquiry Type",
+        lblMsg: "Message",
+        phMsg: "Write your message or role details here...",
+        btnSend: "Send Message",
+        btnSending: "Sending...",
+        footerText: "© 2026 Sabariah, S.A.B. — Apostilled Bachelor of Business Administration | Healthcare Virtual Assistant & Certified Caregiver",
+        inquiryOptions: [
+          "Remote Healthcare Virtual Assistant",
+          "Data & Healthcare Dashboard Support",
+          "Certified Caregiver Role",
+          "Consultation / Collaboration"
+        ],
+        timeline: [
+          {
+            role: "Live-in Caregiver — Hong Kong & Dubai",
+            period: "2016 – Present",
+            desc: "Comprehensive elderly and cardiac care support, medication administration, vital signs monitoring, daily health reporting, and individualized mobility/safety care plans."
+          },
+          {
+            role: "Virtual Care Support — Freelance / Remote",
+            period: "2025 – Present",
+            desc: "Telehealth scheduling, patient outreach, accurate EMR data entry, and designing Excel & Power BI dashboards to track health trends and remote-care KPIs."
+          },
+          {
+            role: "Volunteer Assistant Computer Teacher — YMCA of Hong Kong",
+            period: "2025 – Present",
+            desc: "Hands-on instruction in Microsoft Office and foundational digital literacy, plus developing bilingual training modules and assessments."
+          },
+          {
+            role: "Executive Committee Member — IKA UT Hong Kong Branch",
+            period: "2026 – 2031",
+            desc: "Head of Communication, Technology, and Promotion supporting alumni communication, digital systems, and community programs."
+          }
+        ],
+        skills: [
+          {
+            icon: "🩺",
+            title: "Healthcare & Caregiving",
+            tags: ["Elderly Care", "Cardiac Nursing Support", "Medication Management", "Vital Signs Monitoring", "First Aid / CPR / AED", "Emergency Response"]
+          },
+          {
+            icon: "📋",
+            title: "Virtual Assistance & Admin",
+            tags: ["Telehealth Coordination", "Patient Scheduling", "EMR Data Entry & Integrity", "Clinician & Family Liaison", "Bilingual Docs (EN / ID)"]
+          },
+          {
+            icon: "📊",
+            title: "Data Analytics & Digital Tools",
+            tags: ["Microsoft Office Suite", "Excel Health Dashboards", "Power BI Reporting", "Google Workspace", "Zoom & Telehealth Tools", "Generative AI Workflows"]
+          }
+        ],
+        projectFilters: [
+          { key: "all", label: "All" },
+          { key: "data", label: "Data & Dashboards" },
+          { key: "telehealth", label: "Telehealth Workflows" },
+          { key: "education", label: "Bilingual Education" },
+          { key: "casestudy", label: "Caregiving Case Studies" }
+        ],
+        projects: [
+          {
+            category: "data",
+            categoryLabel: "Data & Dashboards",
+            title: "Patient Vital Signs & Medication Compliance Dashboard (Excel & Power BI)",
+            description: "Interactive clinical tracking system monitoring patient vital signs, medication adherence rates, and remote-care KPIs.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "View Project in Notion ↗"
+          },
+          {
+            category: "telehealth",
+            categoryLabel: "Telehealth Workflows",
+            title: "Integrated Telehealth Coordination Workflow",
+            description: "End-to-end communication and scheduling workflow diagram connecting patients, caregivers, and physicians to improve appointment adherence.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "View Workflow in Notion ↗"
+          },
+          {
+            category: "education",
+            categoryLabel: "Bilingual Education",
+            title: "Bilingual Caregiving Training Modules & Infographics (EN / ID)",
+            description: "Learner-centered visual guides and caregiver training materials developed in English and Indonesian.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "Open Bilingual Module ↗"
+          },
+          {
+            category: "casestudy",
+            categoryLabel: "Caregiving Case Studies",
+            title: "Case Study — Compassion in Action & Elderly Hypertension Care",
+            description: "Structured documentation of two-year live-in elderly care practices focusing on hypertension monitoring, medication compliance, and patient dignity.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "Read Full Case Study ↗"
+          }
+        ],
+        certFilters: [
+          { key: "all", label: "All (14)" },
+          { key: "academic", label: "Academic & Apostille" },
+          { key: "healthcare", label: "Healthcare & Emergency" },
+          { key: "data", label: "Data, IT & ISO" }
+        ],
+        certificates: [
+          {
+            category: "academic", badge: "Academic & Apostille", highlight: true,
+            title: "Bachelor’s Degree in Business Administration (S.A.B.) — Apostille Legalized",
+            issuer: "Universitas Terbuka & Ministry of Law and Human Rights (2022–2026)",
+            btnLabel: "View Degree & Apostille ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "academic", badge: "Academic & Apostille", highlight: true,
+            title: "Official Academic Transcript (S1 Business Administration)",
+            issuer: "Universitas Terbuka (2026)",
+            btnLabel: "View Academic Transcript ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "academic", badge: "Official Resume", highlight: false,
+            title: "Updated Curriculum Vitae (PDF)",
+            issuer: "Official Resume (2026)",
+            btnLabel: "Download Official CV ↗", link: PORTFOLIO_CONFIG.officialCvPdf
+          },
+          {
+            category: "healthcare", badge: "Healthcare & Emergency", highlight: false,
+            title: "National Caregiver Certificate (CNA)",
+            issuer: "Cardiac Nursing Association (Indonesia)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Healthcare & Emergency", highlight: false,
+            title: "National Caregiver Certificate (ACA)",
+            issuer: "American Caregiver Association (United States)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Healthcare & Emergency", highlight: false,
+            title: "Assured Certificate in Caregiving",
+            issuer: "City & Guilds (United Kingdom)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Healthcare & Emergency", highlight: false,
+            title: "Certificate in Caregiving Level 2",
+            issuer: "Training Qualifications UK / TQUK (United Kingdom)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Healthcare & Emergency", highlight: false,
+            title: "Adult First Aid, CPR & AED Certification",
+            issuer: "American Safety & Health Institute / ASHI (United States, 2026)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Healthcare & Emergency", highlight: false,
+            title: "Community Emergency Responder Certificate",
+            issuer: "Fire Services Department, Hong Kong (2025)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "BNSP Certified Data Analyst",
+            issuer: "Badan Nasional Sertifikasi Profesi / DITEKINDO Indonesia (2026)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "BNSP Certified Microsoft Office Specialist",
+            issuer: "Badan Nasional Sertifikasi Profesi / PT. Esas Edukasi Indonesia (2025)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "BNSP Microsoft Office & Data Analysis",
+            issuer: "Badan Nasional Sertifikasi Profesi (2023)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "Certified Computer & Volunteer Assistant Teacher",
+            issuer: "YMCA of Hong Kong (2024–2025)",
+            btnLabel: "Verify Certificate ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "ISO & Quality Management Awareness Bundle",
+            issuer: "ISO 9001:2015, ISO 14001:2015, ISO 45001:2018, SMK3 PP No. 50/2012, QA & QC Awareness",
+            btnLabel: "View ISO Folder ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          }
+        ]
+      },
+
+      id: {
+        brandSub: "Ijazah S1 Terlegalisir Apostille",
+        navHome: "Beranda",
+        navAbout: "Tentang Saya",
+        navSkills: "Keahlian & Layanan",
+        navPortfolio: "Portofolio",
+        navCerts: "Sertifikat & Berkas",
+        navContact: "Kontak",
+        headerNotion: "Brankas Notion ↗",
+        headerCv: "Unduh CV ⬇",
+        verifiedFloat: "✓ Terverifikasi & Apostille",
+        apostilleBadge: "<strong>Sarjana Administrasi Bisnis (S.A.B.) Terlegalisir Apostille</strong> — <em>Diakui & Terverifikasi secara Internasional untuk Karier Global</em>",
+        heroRole: "Healthcare Virtual Assistant & Dukungan Data | Caregiver Bersertifikat",
+        heroSummary: "Memadukan perawatan pasien yang penuh empati dengan administrasi kesehatan digital yang terstruktur. Berpengalaman lebih dari 8 tahun sebagai caregiver internasional di Hong Kong dan Dubai dalam perawatan lansia & jantung, koordinasi telehealth, pencatatan rekam medis elektronik (EMR), serta pelaporan dashboard kesehatan Excel & Power BI.",
+        pill1: "Ijazah S1 Apostille (UT)",
+        pill3: "Sertifikat Pertolongan Pertama, CPR & AED (ASHI)",
+        pill4: "Sertifikasi BNSP Data Analyst & MS Office",
+        heroNotionBtn: "Buka Semua Portofolio & Berkas di Notion ↗",
+        heroCvBtn: "Unduh CV Resmi (PDF) ⬇",
+        heroCertBtn: "Verifikasi Sertifikat & Dokumen Apostille",
+        aboutKicker: "Profil & Perjalanan Karier",
+        aboutTitle: "Tentang Saya & Pengalaman Profesional",
+        execSummaryTitle: "Ringkasan Eksekutif",
+        execSummaryP1: "Saya memadukan lebih dari delapan tahun pengalaman langsung sebagai caregiver internasional di Hong Kong dan Dubai dengan pengelolaan administrasi terstruktur, pengajaran literasi digital, serta pelaporan data kesehatan.",
+        execSummaryP2: "Dengan bekal <strong>Ijazah Sarjana Administrasi Bisnis (S.A.B.) Terlegalisir Apostille</strong>, sertifikasi caregiver internasional (Inggris, Amerika Serikat, Hong Kong, dan Indonesia), serta sertifikasi BNSP Data Analyst, saya membantu tim medis, klinik, dan keluarga menghadirkan layanan perawatan yang aman, rapi, dan berbasis data.",
+        aboutNotionBtn: "Lihat Perjalanan Lengkap di Notion ↗",
+        skillsKicker: "Kompetensi Utama",
+        skillsTitle: "Keahlian Inti & Layanan Profesional",
+        portKicker: "Karya Terapan",
+        portTitle: "Portofolio Proyek & Studi Kasus",
+        portBannerTitle: "📂 Portofolio & Dokumentasi Lengkap di Notion",
+        portBannerDesc: "Telusuri seluruh berkas proyek, pratinjau interaktif, alur kerja telehealth, dan dokumentasi pendukung langsung di ruang kerja Notion saya.",
+        portBannerBtn: "Buka Ruang Kerja Notion ↗",
+        vaultKicker: "Verifikasi Kredensial",
+        vaultTitle: "Brankas Sertifikat & Dokumen Resmi",
+        vaultDesc: "Tautan verifikasi langsung untuk ijazah terlegalisir Apostille, lisensi caregiver internasional, dan sertifikasi kompetensi teknis.",
+        vaultBannerTitle: "🗂️ Arsip Dokumen Lengkap Satu Klik",
+        vaultBannerDesc: "Ingin melihat seluruh sertifikat, dokumen legalisasi Apostille, transkrip nilai, dan file proyek dalam satu dashboard terpadu?",
+        vaultBannerBtn: "Buka Brankas Dokumen Notion ↗",
+        searchPlaceholder: "Cari nama sertifikat atau lembaga penerbit...",
+        noCertsFound: "Sertifikat yang dicari tidak ditemukan.",
+        contactKicker: "Hubungi Saya",
+        contactTitle: "Kontak & Ketersediaan Kerja",
+        availBadge: "🟢 Siap Bekerja Segera — Remote, Freelance, atau Kontrak",
+        directContactTitle: "Kontak Langsung & Verifikasi",
+        directContactDesc: "Terbuka untuk posisi Healthcare Virtual Assistant, dukungan analisis data klinis, koordinasi telehealth, maupun peluang caregiver internasional.",
+        lblEmail: "Alamat Email",
+        btnCopy: "Salin Email",
+        copiedToast: "Email berhasil disalin: riahsaba123@gmail.com",
+        lblNotion: "Portofolio Utama Notion",
+        lblCv: "CV Resmi (PDF)",
+        linkCv: "Unduh CV Terbaru dari Google Drive ↗",
+        lblLangLoc: "Bahasa & Lokasi",
+        valLangLoc: "Bahasa Indonesia (Penutur Asli) • Bahasa Inggris (Aktif Profesional) • Bahasa Arab (Dasar) — Berbasis di Hong Kong",
+        formTitle: "Formulir Pesan Cepat",
+        lblName: "Nama Lengkap",
+        phName: "Contoh: Dr. Sarah Chen",
+        lblFormEmail: "Alamat Email",
+        phEmail: "nama@organisasi.com",
+        lblType: "Jenis Keperluan",
+        lblMsg: "Pesan",
+        phMsg: "Tuliskan pesan atau detail kebutuhan Anda di sini...",
+        btnSend: "Kirim Pesan",
+        btnSending: "Mengirim...",
+        footerText: "© 2026 Sabariah, S.A.B. — Sarjana Administrasi Bisnis (Apostille) | Healthcare Virtual Assistant & Caregiver Bersertifikat",
+        inquiryOptions: [
+          "Remote Healthcare Virtual Assistant",
+          "Dukungan Data & Dashboard Kesehatan",
+          "Posisi Caregiver Bersertifikat",
+          "Konsultasi / Kolaborasi"
+        ],
+        timeline: [
+          {
+            role: "Live-in Caregiver — Hong Kong & Dubai",
+            period: "2016 – Sekarang",
+            desc: "Perawatan lansia dan dukungan keperawatan jantung secara menyeluruh, manajemen obat, pemantauan tanda vital, laporan kesehatan harian, serta rencana mobilitas dan keselamatan pasien."
+          },
+          {
+            role: "Virtual Care Support — Freelance / Remote",
+            period: "2025 – Sekarang",
+            desc: "Penjadwalan telehealth, komunikasi pasien, entri data EMR yang akurat, serta perancangan dashboard Excel & Power BI untuk memantau tren kesehatan dan KPI perawatan jarak jauh."
+          },
+          {
+            role: "Asisten Pengajar Komputer Sukarelawan — YMCA of Hong Kong",
+            period: "2025 – Sekarang",
+            desc: "Pelatihan praktik Microsoft Office dan literasi digital dasar, serta penyusunan modul pelatihan dan evaluasi dwibahasa (Inggris – Indonesia)."
+          },
+          {
+            role: "Pengurus Inti — Ikatan Alumni Universitas Terbuka (IKA UT) Cabang Hong Kong",
+            period: "2026 – 2031",
+            desc: "Ketua Bidang Komunikasi, Teknologi, dan Promosi yang mengelola sistem digital, komunikasi alumni, dan program pemberdayaan komunitas."
+          }
+        ],
+        skills: [
+          {
+            icon: "🩺",
+            title: "Kesehatan & Caregiving",
+            tags: ["Perawatan Lansia", "Dukungan Keperawatan Jantung", "Manajemen Obat", "Pemantauan Tanda Vital", "First Aid / CPR / AED", "Tanggap Darurat"]
+          },
+          {
+            icon: "📋",
+            title: "Virtual Assistant & Administrasi",
+            tags: ["Koordinasi Telehealth", "Penjadwalan Pasien", "Entri & Integritas Data EMR", "Komunikasi Dokter & Keluarga", "Dokumentasi Dwibahasa (EN / ID)"]
+          },
+          {
+            icon: "📊",
+            title: "Analisis Data & Perangkat Digital",
+            tags: ["Microsoft Office Suite", "Dashboard Kesehatan Excel", "Pelaporan Power BI", "Google Workspace", "Zoom & Platform Telehealth", "Alur Kerja Generative AI"]
+          }
+        ],
+        projectFilters: [
+          { key: "all", label: "Semua" },
+          { key: "data", label: "Data & Dashboard" },
+          { key: "telehealth", label: "Alur Kerja Telehealth" },
+          { key: "education", label: "Edukasi Dwibahasa" },
+          { key: "casestudy", label: "Studi Kasus Caregiving" }
+        ],
+        projects: [
+          {
+            category: "data",
+            categoryLabel: "Data & Dashboard",
+            title: "Dashboard Tanda Vital Pasien & Kepatuhan Obat (Excel & Power BI)",
+            description: "Sistem pemantauan klinis interaktif untuk melacak tanda vital pasien, tingkat kepatuhan minum obat, dan indikator kinerja perawatan jarak jauh.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "Lihat Proyek di Notion ↗"
+          },
+          {
+            category: "telehealth",
+            categoryLabel: "Alur Kerja Telehealth",
+            title: "Alur Kerja Koordinasi Telehealth Terintegrasi",
+            description: "Diagram alur komunikasi dan penjadwalan menyeluruh yang menghubungkan pasien, caregiver, dan dokter untuk meningkatkan ketepatan jadwal konsultasi.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "Lihat Alur Kerja di Notion ↗"
+          },
+          {
+            category: "education",
+            categoryLabel: "Edukasi Dwibahasa",
+            title: "Modul Pelatihan & Infografis Caregiving Dwibahasa (EN / ID)",
+            description: "Panduan visual ramah pembelajar dan materi pelatihan caregiver yang disusun dalam Bahasa Inggris dan Bahasa Indonesia.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "Buka Modul Dwibahasa ↗"
+          },
+          {
+            category: "casestudy",
+            categoryLabel: "Studi Kasus Caregiving",
+            title: "Studi Kasus — Pendampingan Lansia & Perawatan Hipertensi",
+            description: "Dokumentasi terstruktur praktik perawatan lansia selama dua tahun yang berfokus pada pemantauan hipertensi, kepatuhan pengobatan, dan martabat pasien.",
+            link: PORTFOLIO_CONFIG.notionMasterVault,
+            btnLabel: "Baca Studi Kasus Lengkap ↗"
+          }
+        ],
+        certFilters: [
+          { key: "all", label: "Semua (14)" },
+          { key: "academic", label: "Akademik & Apostille" },
+          { key: "healthcare", label: "Kesehatan & Darurat" },
+          { key: "data", label: "Data, IT & ISO" }
+        ],
+        certificates: [
+          {
+            category: "academic", badge: "Akademik & Apostille", highlight: true,
+            title: "Ijazah Sarjana Administrasi Bisnis (S.A.B.) — Terlegalisir Apostille",
+            issuer: "Universitas Terbuka & Kementerian Hukum dan HAM RI (2022–2026)",
+            btnLabel: "Lihat Ijazah & Apostille ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "academic", badge: "Akademik & Apostille", highlight: true,
+            title: "Transkrip Nilai Akademik Resmi (S1 Administrasi Bisnis)",
+            issuer: "Universitas Terbuka (2026)",
+            btnLabel: "Lihat Transkrip Akademik ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "academic", badge: "CV Resmi", highlight: false,
+            title: "Curriculum Vitae Terbaru (PDF)",
+            issuer: "Resume Resmi (2026)",
+            btnLabel: "Unduh CV Resmi ↗", link: PORTFOLIO_CONFIG.officialCvPdf
+          },
+          {
+            category: "healthcare", badge: "Kesehatan & Darurat", highlight: false,
+            title: "National Caregiver Certificate (CNA)",
+            issuer: "Cardiac Nursing Association (Indonesia)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Kesehatan & Darurat", highlight: false,
+            title: "National Caregiver Certificate (ACA)",
+            issuer: "American Caregiver Association (Amerika Serikat)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Kesehatan & Darurat", highlight: false,
+            title: "Assured Certificate in Caregiving",
+            issuer: "City & Guilds (Inggris / UK)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Kesehatan & Darurat", highlight: false,
+            title: "Certificate in Caregiving Level 2",
+            issuer: "Training Qualifications UK / TQUK (Inggris / UK)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Kesehatan & Darurat", highlight: false,
+            title: "Adult First Aid, CPR & AED Certification",
+            issuer: "American Safety & Health Institute / ASHI (Amerika Serikat, 2026)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "healthcare", badge: "Kesehatan & Darurat", highlight: false,
+            title: "Community Emergency Responder Certificate",
+            issuer: "Fire Services Department, Hong Kong (2025)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "BNSP Certified Data Analyst",
+            issuer: "Badan Nasional Sertifikasi Profesi / DITEKINDO Indonesia (2026)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "BNSP Certified Microsoft Office Specialist",
+            issuer: "Badan Nasional Sertifikasi Profesi / PT. Esas Edukasi Indonesia (2025)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "BNSP Microsoft Office & Data Analysis",
+            issuer: "Badan Nasional Sertifikasi Profesi (2023)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "Certified Computer & Volunteer Assistant Teacher",
+            issuer: "YMCA of Hong Kong (2024–2025)",
+            btnLabel: "Verifikasi Sertifikat ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          },
+          {
+            category: "data", badge: "Data, IT & ISO", highlight: false,
+            title: "Bundel Sertifikat ISO & Manajemen Mutu (QA/QC)",
+            issuer: "ISO 9001:2015, ISO 14001:2015, ISO 45001:2018, SMK3 PP No. 50/2012, QA & QC Awareness",
+            btnLabel: "Lihat Folder Sertifikat ISO ↗", link: PORTFOLIO_CONFIG.notionMasterVault
+          }
+        ]
+      }
+    };
+
+    let currentLang = 'en';
+    let activeProjectFilter = 'all';
+    let activeCertFilter = 'all';
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    function initStaticLinks() {
+      const notionIds = [
+        'headerNotionBtn', 'heroNotionBtn', 'aboutNotionBtn',
+        'portfolioNotionBtn', 'vaultNotionBtn', 'contactNotionLink'
+      ];
+      notionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = PORTFOLIO_CONFIG.notionMasterVault;
+      });
+
+      const cvIds = ['headerCvBtn', 'heroCvBtn', 'contactCvLink'];
+      cvIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = PORTFOLIO_CONFIG.officialCvPdf;
+      });
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      const dict = I18N[lang];
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key]) el.innerHTML = dict[key];
+      });
+
+      document.getElementById('certSearchInput').placeholder = dict.searchPlaceholder;
+      document.getElementById('senderName').placeholder = dict.phName;
+      document.getElementById('senderEmail').placeholder = dict.phEmail;
+      document.getElementById('senderMessage').placeholder = dict.phMsg;
+
+      const selectEl = document.getElementById('inquiryType');
+      selectEl.innerHTML = dict.inquiryOptions.map(opt => `<option value="${opt}">${opt}</option>`).join('');
+
+      document.getElementById('timelineContainer').innerHTML = dict.timeline.map(item => `
+        <div class="timeline-item">
+          <div class="timeline-top">
+            <span class="timeline-role">${item.role}</span>
+            <span class="timeline-period">${item.period}</span>
+          </div>
+          <p>${item.desc}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('skillsContainer').innerHTML = dict.skills.map(s => `
+        <div class="skill-card">
+          <div class="skill-icon">${s.icon}</div>
+          <h3>${s.title}</h3>
+          <div class="skill-tags">
+            ${s.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      renderProjectFilters();
+      renderProjects();
+      renderCertFilters();
+      renderCertificates();
+    }
+
+    function renderProjectFilters() {
+      const dict = I18N[currentLang];
+      const container = document.getElementById('projectFilters');
+      container.innerHTML = dict.projectFilters.map(f => `
+        <button class="filter-btn ${activeProjectFilter === f.key ? 'active' : ''}" data-filter="${f.key}">
+          ${f.label}
+        </button>
+      `).join('');
+
+      container.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeProjectFilter = btn.dataset.filter;
+          renderProjectFilters();
+          renderProjects();
+        });
+      });
+    }
+
+    function renderProjects() {
+      const dict = I18N[currentLang];
+      const grid = document.getElementById('projectsGrid');
+      const items = activeProjectFilter === 'all'
+        ? dict.projects
+        : dict.projects.filter(p => p.category === activeProjectFilter);
+
+      grid.innerHTML = items.map(p => `
+        <div class="project-card">
+          <div>
+            <div class="project-cat">${p.categoryLabel}</div>
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+          </div>
+          <div>
+            <a href="${p.link}" target="_blank" rel="noopener" class="btn btn-outline">
+              ${p.btnLabel}
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderCertFilters() {
+      const dict = I18N[currentLang];
+      const container = document.getElementById('certFilters');
+      container.innerHTML = dict.certFilters.map(f => `
+        <button class="filter-btn ${activeCertFilter === f.key ? 'active' : ''}" data-cert-filter="${f.key}">
+          ${f.label}
+        </button>
+      `).join('');
+
+      container.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeCertFilter = btn.dataset.certFilter;
+          renderCertFilters();
+          renderCertificates();
+        });
+      });
+    }
+
+    function renderCertificates() {
+      const dict = I18N[currentLang];
+      const grid = document.getElementById('certGrid');
+      const q = document.getElementById('certSearchInput').value.trim().toLowerCase();
+
+      const items = dict.certificates.filter(c => {
+        const matchCat = activeCertFilter === 'all' || c.category === activeCertFilter;
+        const matchText = !q || c.title.toLowerCase().includes(q) || c.issuer.toLowerCase().includes(q);
+        return matchCat && matchText;
+      });
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p style="color:var(--text-muted); grid-column:1/-1;">${dict.noCertsFound}</p>`;
+        return;
+      }
+
+      grid.innerHTML = items.map(c => `
+        <div class="cert-card ${c.highlight ? 'apostille-highlight' : ''}">
+          <div>
+            <span class="cert-badge">${c.badge}</span>
+            <div class="cert-title">${c.title}</div>
+            <div class="cert-meta">${c.issuer}</div>
+          </div>
+          <div>
+            <a href="${c.link}" target="_blank" rel="noopener" class="btn ${c.highlight ? 'btn-primary' : 'btn-outline'}" style="padding:8px 14px; font-size:0.82rem;">
+              ${c.btnLabel}
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initStaticLinks();
+      applyLanguage('en');
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          applyLanguage(btn.dataset.lang);
+        });
+      });
+
+      document.getElementById('certSearchInput').addEventListener('input', () => {
+        renderCertificates();
+      });
+
+      document.getElementById('copyEmailBtn').addEventListener('click', () => {
+        navigator.clipboard.writeText('riahsaba123@gmail.com').then(() => {
+          showToast(I18N[currentLang].copiedToast);
+        });
+      });
+
+      document.getElementById('inquiryForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const dict = I18N[currentLang];
+        const submitBtn = document.getElementById('submitBtn');
+        const payload = {
+          name: document.getElementById('senderName').value,
+          email: document.getElementById('senderEmail').value,
+          inquiryType: document.getElementById('inquiryType').value,
+          message: document.getElementById('senderMessage').value,
+          lang: currentLang.toUpperCase()
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = dict.btnSending;
+
+        if (typeof google !== 'undefined' && google.script && google.script.run) {
+          google.script.run
+            .withSuccessHandler((res) => {
+              showToast(currentLang === 'id' ? res.messageId : res.messageEn);
+              if (res.success) document.getElementById('inquiryForm').reset();
+              submitBtn.disabled = false;
+              submitBtn.textContent = dict.btnSend;
+            })
+            .withFailureHandler((err) => {
+              showToast('Error: ' + err.message);
+              submitBtn.disabled = false;
+              submitBtn.textContent = dict.btnSend;
+            })
+            .sendInquiryEmail(payload);
+        } else {
+          showToast('Preview mode: Message ready to send.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = dict.btnSend;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
